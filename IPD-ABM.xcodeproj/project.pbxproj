@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE0418CC2AE26E9B006AF3DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0418CB2AE26E9B006AF3DB /* main.cpp */; };
+		FE0418D52AE27308006AF3DB /* Agent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0418D32AE27308006AF3DB /* Agent.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,13 @@
 /* Begin PBXFileReference section */
 		FE0418C82AE26E9B006AF3DB /* IPD-ABM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "IPD-ABM"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE0418CB2AE26E9B006AF3DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FE0418D22AE26ED6006AF3DB /* AKML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AKML; sourceTree = "<group>"; };
+		FE0418D32AE27308006AF3DB /* Agent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Agent.cpp; sourceTree = "<group>"; };
+		FE0418D42AE27308006AF3DB /* Agent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Agent.hpp; sourceTree = "<group>"; };
+		FE0418D62AE2745B006AF3DB /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
+		FE46271D2AF7DAE300BB3618 /* IPD-ABM */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IPD-ABM"; sourceTree = "<group>"; };
+		FE46271E2AF7DB1D00BB3618 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		FE46271F2AF7ED9300BB3618 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				FE0418CA2AE26E9B006AF3DB /* IPD-ABM */,
+				FE46271D2AF7DAE300BB3618 /* IPD-ABM */,
 				FE0418C92AE26E9B006AF3DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +66,13 @@
 		FE0418CA2AE26E9B006AF3DB /* IPD-ABM */ = {
 			isa = PBXGroup;
 			children = (
+				FE46271E2AF7DB1D00BB3618 /* readme.md */,
+				FE0418D22AE26ED6006AF3DB /* AKML */,
 				FE0418CB2AE26E9B006AF3DB /* main.cpp */,
+				FE0418D32AE27308006AF3DB /* Agent.cpp */,
+				FE0418D42AE27308006AF3DB /* Agent.hpp */,
+				FE0418D62AE2745B006AF3DB /* constants.hpp */,
+				FE46271F2AF7ED9300BB3618 /* .gitignore */,
 			);
 			path = "IPD-ABM";
 			sourceTree = "<group>";
@@ -120,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE0418CC2AE26E9B006AF3DB /* main.cpp in Sources */,
+				FE0418D52AE27308006AF3DB /* Agent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
