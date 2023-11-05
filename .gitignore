@@ -11,6 +11,7 @@ CPackSourceConfig.cmake
 xcdebugger
 _deps
 *.xcodeproj
+IPD-ABM.xcodeproj
 *.DS_Store
 .DS_Store
 .cache
