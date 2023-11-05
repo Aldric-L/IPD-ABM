@@ -10,11 +10,12 @@ CPackConfig.cmake
 CPackSourceConfig.cmake
 xcdebugger
 _deps
-.xcodeproj
+*.xcodeproj
+*.DS_Store
 .DS_Store
 .cache
 .idea
 .vs
-.vscode
-.pbxproj
+*.vscode
+*.pbxproj
 

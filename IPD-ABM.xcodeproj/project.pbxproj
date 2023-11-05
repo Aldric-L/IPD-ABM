@@ -32,7 +32,6 @@
 		FE0418D62AE2745B006AF3DB /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
 		FE46271D2AF7DAE300BB3618 /* IPD-ABM */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IPD-ABM"; sourceTree = "<group>"; };
 		FE46271E2AF7DB1D00BB3618 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		FE46271F2AF7ED9300BB3618 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +71,6 @@
 				FE0418D32AE27308006AF3DB /* Agent.cpp */,
 				FE0418D42AE27308006AF3DB /* Agent.hpp */,
 				FE0418D62AE2745B006AF3DB /* constants.hpp */,
-				FE46271F2AF7ED9300BB3618 /* .gitignore */,
 			);
 			path = "IPD-ABM";
 			sourceTree = "<group>";
