@@ -23,6 +23,9 @@
 
 #include "constants.hpp"
 #include "Agent.hpp"
+#include "IPD_Save.hpp"
+#include "AKML/AgentBasedUtilities/BaseAgent.cpp"
+#include "AKML/AgentBasedUtilities/CSV_Saver.cpp"
 
 struct versus {
     Agent* first_player;
@@ -68,10 +71,18 @@ int main(int argc, const char * argv[]) {
             }
     }
     
+    akml::CSV_Saver saver;
     
     std::size_t generationsCounter(0);
     // Rounds
     for (unsigned short int genround(1); genround <= GEN_ROUDS; genround++){
+        unsigned long cooperator_mooves (0);
+        std::array<bool, AGENTS_POP_SIZE> isFullCooperator;
+        std::array<bool, AGENTS_POP_SIZE> isFullDefector;
+        for (int i(0); i < AGENTS_POP_SIZE; i++){
+            isFullCooperator[i] = true;
+            isFullDefector[i] = true;
+        }
         for (unsigned short int round(1); round <= ROUNDS; round++){
             for (unsigned short int i(0); i < PAIRS_POP_SIZE; i++){
                 bool p1 = pairs[i].first_player->makedecision();
@@ -79,18 +90,33 @@ int main(int argc, const char * argv[]) {
                 pairs[i].first_player->createMemory(p2, p1);
                 pairs[i].second_player->createMemory(p1, p2);
                 if (p1 == true){
+                    isFullCooperator[i*2] = isFullCooperator[i*2] && true;
+                    isFullDefector[i*2] = false;
+                    cooperator_mooves++;
                     if (p2 == true){
+                        isFullCooperator[i*2+1] = isFullCooperator[i*2+1] && true;
+                        isFullDefector[i*2+1] = false;
+                        cooperator_mooves++;
                         pairs[i].first_player->payoff = REWARD_ALLCOOP;
                         pairs[i].second_player->payoff = REWARD_ALLCOOP;
                     }else {
+                        isFullCooperator[i*2+1] = false;
+                        isFullDefector[i*2+1] = isFullDefector[i*2+1] && true;
                         pairs[i].first_player->payoff = REWARD_BETRAYED;
                         pairs[i].second_player->payoff = REWARD_BETRAYER;
                     }
                 }else {
+                    isFullCooperator[i*2] = false;
+                    isFullDefector[i*2] = isFullDefector[i*2] && true;
                     if (p2 == true){
+                        isFullCooperator[i*2+1] = isFullCooperator[i*2+1] && true;
+                        isFullDefector[i*2+1] = false;
+                        cooperator_mooves++;
                         pairs[i].first_player->payoff = REWARD_BETRAYER;
                         pairs[i].second_player->payoff = REWARD_BETRAYED;
                     }else {
+                        isFullCooperator[i*2+1] = false;
+                        isFullDefector[i*2+1] = isFullDefector[i*2+1] && true;
                         pairs[i].first_player->payoff = REWARD_NOCOOP;
                         pairs[i].second_player->payoff = REWARD_NOCOOP;
                     }
@@ -120,6 +146,20 @@ int main(int argc, const char * argv[]) {
             }
         }
         std::sort(MSE_net.begin(), MSE_net.end());
+        float pair_score_mean(0);
+        unsigned short fullcoop_agents (0), fulldefector_agents (0);
+        for (int i(0); i < AGENTS_POP_SIZE; i++){
+            pair_score_mean += MSE_net[i].first;
+            if (isFullCooperator[i] && !isFullDefector[i])
+                fullcoop_agents++;
+            else if (!isFullCooperator[i] && isFullDefector[i])
+                fulldefector_agents++;
+        }
+        pair_score_mean = (float)(pair_score_mean/AGENTS_POP_SIZE);
+        
+        akml::Save* current_save;
+        current_save = new IPD_Save (cooperator_mooves, AGENTS_POP_SIZE, MSE_net[AGENTS_POP_SIZE-1].first, fullcoop_agents, fulldefector_agents, pair_score_mean);
+        saver.addSave(&current_save);
         
         generationsCounter++;
         ga.generateNewGeneration(MSE_net, generationsCounter);
@@ -173,7 +213,7 @@ int main(int argc, const char * argv[]) {
             delete agents[i];
     }
     
-    
+    saver.template saveToCSV<IPD_Save>();
     
     return 0;
 }

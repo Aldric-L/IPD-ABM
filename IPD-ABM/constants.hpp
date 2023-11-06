@@ -39,5 +39,7 @@
 // AKML.hpp contains all the basic utilities needed to build a NeuralNetwork
 #include "AKML/AKML.hpp"
 #include "AKML/GeneticAlgorithm.cpp"
+#include "AKML/AgentBasedUtilities/BaseAgent.hpp"
+#include "AKML/AgentBasedUtilities/CSV_Saver.hpp"
 
 #endif /* constants_hpp */
