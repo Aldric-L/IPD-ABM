@@ -7,7 +7,7 @@ The main purpose of this project is to reproduce a classical model in game theor
 We archieved to obtain exactly the same results as Harrald and Fogel (1996). The simulation works as intended, and shows that the defect behavior (and strategy) is clearly dominant.
 
 A simulation log is available in csv in the results folder. A summary plot is available here.
-[summary plot](https://raw.githubusercontent.com/Aldric-L/IPD-ABM/main/results/data_processing/plot1-fullcooperative-vs-fullnoncooperative.png)
+![summary plot](https://raw.githubusercontent.com/Aldric-L/IPD-ABM/main/results/data_processing/plot1-fullcooperative-vs-fullnoncooperative.png)
 
 ### Technical informations
 
