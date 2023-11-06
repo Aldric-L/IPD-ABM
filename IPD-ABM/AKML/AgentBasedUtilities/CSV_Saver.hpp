@@ -22,9 +22,12 @@ namespace akml {
         std::vector<std::pair<std::size_t, akml::Save*>> memory;
         
     public:
-        void addSave(akml::Save** iteration);
+        inline void addSave(akml::Save** iteration) {
+            memory.push_back(std::make_pair((memory.size() == 0) ? 1 : memory.back().first+1, *iteration));
+        }
+        
         template <class Saveclass>
-        void saveToCSV(const std::string filepathandname="data.csv") {
+        inline void saveToCSV(const std::string filepathandname="data.csv") {
             std::ofstream file;
             file.open (filepathandname);
             file << "iteration," << Saveclass::printTitleAsCSV() <<"\n";

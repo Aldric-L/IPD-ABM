@@ -14,7 +14,6 @@
 namespace akml {
 
     class Save {
-        
         public:
         virtual std::string printAsCSV() = 0;
         static std::string printTitleAsCSV();
